@@ -1,0 +1,11 @@
+
+.news-card {
+    width: 70vw;
+    margin: 10px auto;
+    padding: 5px;
+    border: 1px solid lightblue;
+}
+
+.news-card > a {
+    text-decoration: none;
+}
