@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import NewsCard from '../NewsCard';
 import ReactPaginate from 'react-paginate';
+import NewsCard from '../NewsCard';
 
 const News: React.FC = () => {
   const [hits, setHits] = useState([]);
@@ -19,7 +19,7 @@ const News: React.FC = () => {
       console.log(result);
       setHits(result.data.hits);
       setIsLoaded(true);
-      setPageCount(result.data.nbPages)
+      setPageCount(result.data.nbPages);
     } catch (error) {
       console.error(error);
     }
@@ -32,8 +32,10 @@ const News: React.FC = () => {
 
   return (
     <div>
-      <label>Search</label>
-      <input value={query} onChange={(evt) => setQuery(evt.target.value)} />
+      <div>
+        <label>Search: </label>
+        <input value={query} onChange={(evt) => setQuery(evt.target.value)} />
+      </div>
       <button onClick={handleFetch}>Search</button>
 
       {isLoaded ? (
@@ -52,19 +54,21 @@ const News: React.FC = () => {
       )}
 
       {isLoaded ? (
-        <ReactPaginate
-          pageCount={pageCount}
-          pageRangeDisplayed={2}
-          marginPagesDisplayed={2}
-          onPageChange={handlePageChange}
-          containerClassName={'container'}
-          previousLinkClassName={'page'}
-          breakClassName={'page'}
-          nextLinkClassName={'page'}
-          pageClassName={'page'}
-          disabledClassName={'disabled'}
-          activeClassName={'active'}
-        />
+        <div style={{ display: 'flex', justifyContent: 'center'}}>
+          <ReactPaginate
+            pageCount={pageCount}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={2}
+            onPageChange={handlePageChange}
+            containerClassName={'container'}
+            previousLinkClassName={'page'}
+            breakClassName={'page'}
+            nextLinkClassName={'page'}
+            pageClassName={'page'}
+            disabledClassName={'disabled'}
+            activeClassName={'active'}
+          />
+        </div>
       ) : (
         <div></div>
       )}

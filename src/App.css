@@ -36,6 +36,10 @@
   }
 }
 
+input {
+  margin: 5px 10px;
+}
+
 
 .container{
   display: flex;
